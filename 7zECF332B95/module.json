@@ -1,0 +1,35 @@
+{
+  "id": "d10-success-sound-player",
+  "title": "D10 Success Sound Player",
+  "description": "World-shared configurable outcome sound effects for World of Darkness 20th Edition, synchronized with Dice So Nice! The GM configures once for all players.",
+  "version": "1.2.0",
+  "authors": [
+    {
+      "name": "OpenAI"
+    }
+  ],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "14"
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "worldofdarkness",
+        "type": "system"
+      }
+    ],
+    "requires": [
+      {
+        "id": "dice-so-nice",
+        "type": "module"
+      }
+    ]
+  },
+  "url": "",
+  "manifest": "",
+  "download": ""
+}

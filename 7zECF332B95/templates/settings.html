@@ -1,0 +1,82 @@
+<section class="d10-success-sound-player-settings">
+  <p class="notes">
+    Configure shared sound playback for the entire world. The GM chooses the root sound folder and sound files once.
+    All players use this configuration automatically. Audio plays locally on each connected player's browser.
+  </p>
+
+  <div class="form-group">
+    <label>Sound folder</label>
+    <div class="form-fields">
+      <input type="text" name="folder" value="{{folder}}" placeholder="sounds/wod20">
+      <button type="button" data-wod-action="browseFolder" data-tooltip="Choose folder">
+        <i class="fas fa-folder-open"></i>
+      </button>
+    </div>
+    <p class="hint">Foundry paths are relative to the public Data directory. Example: use sounds/wod20, not Data/sounds/wod20. Files selected with Browse already have their full path.</p>
+  </div>
+
+  <hr>
+  <h3>Outcome sounds</h3>
+
+  {{#each soundFields}}
+  <div class="form-group">
+    <label>{{this.label}}</label>
+    <div class="form-fields">
+      <input type="text" name="sound-{{this.key}}" value="{{this.path}}" placeholder="Choose an audio file">
+      <button type="button" data-wod-action="browseSound" data-key="{{this.key}}" data-tooltip="Browse audio">
+        <i class="fas fa-folder-open"></i>
+      </button>
+      <button type="button" data-wod-action="testSound" data-key="{{this.key}}" data-tooltip="Test this sound">
+        <i class="fas fa-play"></i>
+      </button>
+    </div>
+  </div>
+  {{/each}}
+
+  <hr>
+  <h3>Playback</h3>
+
+  <div class="form-group">
+    <label>Enabled</label>
+    <div class="form-fields">
+      <input type="checkbox" name="enabled" {{#if enabled}}checked{{/if}}>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Volume <span data-volume-label>{{volumePercent}}%</span></label>
+    <div class="form-fields">
+      <input type="range" name="volume" min="0" max="100" value="{{volumePercent}}">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Only rolls made by me</label>
+    <div class="form-fields">
+      <input type="checkbox" name="ownOnly" {{#if ownOnly}}checked{{/if}}>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Exceptional success sound</label>
+    <div class="form-fields">
+      <input type="checkbox" name="exceptionalEnabled" {{#if exceptionalEnabled}}checked{{/if}}>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Exceptional threshold</label>
+    <div class="form-fields">
+      <input type="number" name="exceptionalThreshold" min="1" max="100" value="{{exceptionalThreshold}}">
+    </div>
+  </div>
+
+  <footer class="form-footer">
+    <button type="button" data-wod-action="testAll">
+      <i class="fas fa-volume-up"></i> Test 1-success sound
+    </button>
+    <button type="submit">
+      <i class="fas fa-save"></i> Save settings
+    </button>
+  </footer>
+</section>
